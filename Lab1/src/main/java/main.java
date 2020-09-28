@@ -5,8 +5,6 @@ public class main {
         FuncSec sec = new FuncSec();
         double radian = 1.57;
         double res = sec.calc(radian);
-
-
         //test tree
         BPlusTree bpt = new BPlusTree(3);
         bpt.insert(5,10);
