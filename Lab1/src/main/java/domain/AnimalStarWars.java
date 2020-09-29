@@ -1,6 +1,6 @@
 package domain;
 
-public abstract class Animal {
+public abstract class AnimalStarWars {
     String name;
     int age;
     int intelligent;
