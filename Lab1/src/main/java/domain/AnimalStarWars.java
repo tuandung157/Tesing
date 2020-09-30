@@ -3,8 +3,20 @@ package domain;
 public abstract class AnimalStarWars {
     String name;
     int age;
-    int intelligent;
-    int strong;
+    double heart;
+    double calm;
+
+    double intelligent;
+    double strong;
+
+    public AnimalStarWars(String name, int age, double heart, double calm, double intelligent, double strong) {
+        this.name = name;
+        this.age = age;
+        this.heart = heart;
+        this.calm = calm;
+        this.intelligent = intelligent;
+        this.strong = strong;
+    }
 
     public String getName() {
         return name;
@@ -22,19 +34,35 @@ public abstract class AnimalStarWars {
         this.age = age;
     }
 
-    public int getIntelligent() {
+    public double getHeart() {
+        return heart;
+    }
+
+    public void setHeart(double heart) {
+        this.heart = heart;
+    }
+
+    public double getCalm() {
+        return calm;
+    }
+
+    public void setCalm(double calm) {
+        this.calm = calm;
+    }
+
+    public double getIntelligent() {
         return intelligent;
     }
 
-    public void setIntelligent(int intelligent) {
+    public void setIntelligent(double intelligent) {
         this.intelligent = intelligent;
     }
 
-    public int getStrong() {
+    public double getStrong() {
         return strong;
     }
 
-    public void setStrong(int strong) {
+    public void setStrong(double strong) {
         this.strong = strong;
     }
 }

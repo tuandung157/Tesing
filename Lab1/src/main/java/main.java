@@ -19,7 +19,6 @@ public class main {
         }
 
         //test domain
-        Humans tuanDung = new Humans();
-        tuanDung.makeDamage(1);
+
     }
 }

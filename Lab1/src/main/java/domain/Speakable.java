@@ -1,5 +1,5 @@
 package domain;
 
 public interface Speakable {
-    void makeSpeak();
+    void makeSpeak(int intelligent);
 }
