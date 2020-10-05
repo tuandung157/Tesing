@@ -18,6 +18,17 @@ public abstract class AnimalStarWars {
         this.strong = strong;
     }
 
+    public String toString() {
+        return "AnimalStarWars{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", heart=" + heart +
+                ", calm=" + calm +
+                ", intelligent=" + intelligent +
+                ", strong=" + strong +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
