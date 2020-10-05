@@ -8,16 +8,19 @@ public abstract class AnimalStarWars {
 
     double intelligent;
     double strong;
+    int team;
 
-    public AnimalStarWars(String name, int age, double heart, double calm, double intelligent, double strong) {
+    public AnimalStarWars(String name, int age, double heart, double calm, double intelligent, double strong, int team) {
         this.name = name;
         this.age = age;
         this.heart = heart;
         this.calm = calm;
         this.intelligent = intelligent;
         this.strong = strong;
+        this.team = team;
     }
 
+    @Override
     public String toString() {
         return "AnimalStarWars{" +
                 "name='" + name + '\'' +
@@ -26,6 +29,7 @@ public abstract class AnimalStarWars {
                 ", calm=" + calm +
                 ", intelligent=" + intelligent +
                 ", strong=" + strong +
+                ", team=" + team +
                 '}';
     }
 
@@ -75,5 +79,13 @@ public abstract class AnimalStarWars {
 
     public void setStrong(double strong) {
         this.strong = strong;
+    }
+
+    public int getTeam() {
+        return team;
+    }
+
+    public void setTeam(int team) {
+        this.team = team;
     }
 }

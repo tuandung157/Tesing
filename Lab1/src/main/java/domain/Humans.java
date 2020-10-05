@@ -4,12 +4,10 @@ public class Humans extends AnimalStarWars implements Attackable, Triggerable {
 
     double damageHuman;
 
-    public Humans(String name, int age, double heart, double calm, double intelligent, double strong, double damageHuman) {
-        super(name, age, heart, calm, intelligent, strong);
+    public Humans(String name, int age, double heart, double calm, double intelligent, double strong, int team, double damageHuman) {
+        super(name, age, heart, calm, intelligent, strong, team);
         this.damageHuman = damageHuman;
     }
-
-
 
     public void makeDamage(int damage) {
         System.out.println("hit " + damage);
@@ -30,6 +28,7 @@ public class Humans extends AnimalStarWars implements Attackable, Triggerable {
                 ", calm=" + calm +
                 ", intelligent=" + intelligent +
                 ", strong=" + strong +
+                ", team=" + team +
                 ", damageHuman=" + damageHuman +
                 '}';
     }

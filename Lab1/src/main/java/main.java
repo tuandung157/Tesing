@@ -1,5 +1,6 @@
 import domain.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class main {
@@ -21,15 +22,11 @@ public class main {
         }
 */
         //test domain
-        Humans tuandung = new Humans("tuandung",23,100,1000,100,100,100);
-        Chiss chissExample = new Chiss("chiss", 1,100,500,20,20);
-        tuandung.makeSpeak(chissExample);
 
-        //result
-        System.out.println(tuandung.toString());
-        System.out.println(chissExample.toString());
-
-
+        //game
+        BrockianUltraCricketGame game = new BrockianUltraCricketGame();
+        ArrayList listAnimal = game.initAnimal();
+        game.chooseTeam(listAnimal);
     }
 
 }
