@@ -32,6 +32,9 @@ public abstract class AnimalStarWars {
                 ", team=" + team +
                 '}';
     }
+    public void speak(){
+        System.out.println(this.name+ " say something");
+    }
 
     public String getName() {
         return name;

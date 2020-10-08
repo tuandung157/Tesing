@@ -25,8 +25,10 @@ public class main {
 
         //game
         BrockianUltraCricketGame game = new BrockianUltraCricketGame();
-        ArrayList listAnimal = game.initAnimal();
-        game.chooseTeam(listAnimal);
+        ArrayList<AnimalStarWars> listAnimal = game.initAnimal();
+        game.playGame(listAnimal, StatePlay.Idle);
+        game.playGame(listAnimal, StatePlay.Triggered);
+
     }
 
 }
