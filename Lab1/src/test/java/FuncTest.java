@@ -38,6 +38,4 @@ public class FuncTest {
         assertTrue(EPS_Equals(INF,sec.calc(Math.PI/2)),"test with param PI/2");
     }
 
-
-
 }

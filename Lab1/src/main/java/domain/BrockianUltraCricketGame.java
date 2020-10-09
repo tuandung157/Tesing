@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class BrockianUltraCricketGame {
     public ArrayList<AnimalStarWars> team0 = new ArrayList<>();
@@ -15,12 +16,12 @@ public class BrockianUltraCricketGame {
                 System.out.println("in state Idle");
                 //init
                 this.chooseTeam(listAnimal);
-                listAnimal.get(1).speak();
-
+                //talk
+                this.conversation(listAnimal);
                 break;
 
             case Triggered:
-
+                System.out.println("in state Triggered");
 
                 break;
 
@@ -66,16 +67,32 @@ public class BrockianUltraCricketGame {
     public ArrayList<AnimalStarWars> initAnimal(){
         ArrayList<AnimalStarWars> listAnimal = new ArrayList<>();
         Humans humans1 = new Humans("tuandung1",22,100,1000,100,100,0,100);
-        Humans tuandung = new Humans("tuandung",23,100,1000,100,100,0,100);
+        Humans tuandung = new Humans("tuandung",23,100,1000,200,100,0,100);
         Chiss chissExample = new Chiss("chiss", 10,100,500,20,20,0);
 
         listAnimal.add(humans1);
         listAnimal.add(tuandung);
         listAnimal.add(chissExample);
 
-
-
-
+        this.trigger(tuandung, humans1);
         return listAnimal;
+    }
+    public void conversation(ArrayList<AnimalStarWars> listAnimal){
+        int numberSpeech = new Random().nextInt(10);
+        int random;
+        for(int i =0;i<numberSpeech;i++){
+            random = new Random().nextInt(listAnimal.size());
+            listAnimal.get(random).speak();
+        }
+    }
+
+    public void trigger(AnimalStarWars a, AnimalStarWars b){
+        System.out.println(a.getName() + "trigger to" + b.getName());
+
+        double calmDamage = a.getIntelligent() - b.getIntelligent();
+        if(calmDamage < 0) calmDamage = 1.0;
+        double tmp = b.getCalm() - calmDamage;
+        b.setCalm(tmp);
+        System.out.println("clam " + b.calm);
     }
 }
