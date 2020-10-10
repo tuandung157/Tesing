@@ -29,6 +29,8 @@ public class main {
         game.playGame(listAnimal, StatePlay.Idle);
         game.playGame(listAnimal, StatePlay.Triggered);
 
+
+
     }
 
 }

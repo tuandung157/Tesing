@@ -22,12 +22,13 @@ public class BrockianUltraCricketGame {
 
             case Triggered:
                 System.out.println("in state Triggered");
-
+                int teamWin = this.triggerByTeam(team0,team1,team2);
                 break;
 
             case Played:
                 System.out.println("in state Played");
                 //attack with team;
+
                 break;
         }
     }
@@ -37,14 +38,15 @@ public class BrockianUltraCricketGame {
         int size = listAnimal.size();
         System.out.println(size);
         listAnimal.forEach(e -> {
-            //random team
-            //System.out.println(e.getClass().getSimpleName());
-            int temp = (Math.random() <= 0.5) ? 1 : 2;
-            //choose team
-            String name = e.getClass().getSimpleName();
-            if(name.equals("Humans") || name.equals("Yodas") || name.equals("Wookiees")){
-                e.setTeam(0);
-            }else e.setTeam(temp);
+            if(e.getAge() <18) System.out.println("You are not old enough to participate");
+            else{
+                int temp = (Math.random() <= 0.5) ? 1 : 2;
+                //choose team
+                String name = e.getClass().getSimpleName();
+                if(name.equals("Humans") || name.equals("Yodas") || name.equals("Wookiees")){
+                    e.setTeam(0);
+                }else e.setTeam(temp);
+            }
         });
 
         //set team
@@ -73,8 +75,10 @@ public class BrockianUltraCricketGame {
         listAnimal.add(humans1);
         listAnimal.add(tuandung);
         listAnimal.add(chissExample);
+        //fast test
+        this.triggerByObject(tuandung, humans1);
+        AttackByObject(tuandung, chissExample);
 
-        this.trigger(tuandung, humans1);
         return listAnimal;
     }
     public void conversation(ArrayList<AnimalStarWars> listAnimal){
@@ -86,7 +90,7 @@ public class BrockianUltraCricketGame {
         }
     }
 
-    public void trigger(AnimalStarWars a, AnimalStarWars b){
+    public void triggerByObject(AnimalStarWars a, AnimalStarWars b){
         System.out.println(a.getName() + "trigger to" + b.getName());
 
         double calmDamage = a.getIntelligent() - b.getIntelligent();
@@ -95,4 +99,58 @@ public class BrockianUltraCricketGame {
         b.setCalm(tmp);
         System.out.println("clam " + b.calm);
     }
+    //compare sum intel and calm
+    public int triggerByTeam(ArrayList<AnimalStarWars> teamA,ArrayList<AnimalStarWars> teamB,ArrayList<AnimalStarWars> teamC){
+        double calmTeamA = 0;
+        double calmTeamB = 0;
+        double calmTeamC = 0;
+        for(int i = 0; i < teamA.size();i++){
+            calmTeamA += teamA.get(i).getCalm();
+        }
+        System.out.println(calmTeamA);
+
+        for(int i = 0; i < teamB.size();i++){
+            calmTeamB += teamB.get(i).getCalm();
+        }
+        System.out.println(calmTeamB);
+
+        for(int i = 0; i < teamC.size();i++){
+            calmTeamC += teamC.get(i).getCalm();
+        }
+        System.out.println(calmTeamC);
+
+        if(calmTeamA > calmTeamB){
+            if(calmTeamA > calmTeamC) {
+
+                System.out.println("team A win in trigger round");
+                return 0;
+            }
+            else {
+                System.out.println("team C win in trigger round");
+                return 2;
+            }
+        }else{
+            if(calmTeamB > calmTeamC) {
+                System.out.println("team B win in trigger round");
+                return 1;
+            }
+            else {
+                System.out.println("team C win in trigger round");
+                return 2;
+            }
+        }
+    }
+
+    // attack
+    public void AttackByObject(AnimalStarWars a, AnimalStarWars b){
+        System.out.println(a.getName() + "hit to" + b.getName());
+        double tmp = b.getHeart() - a.getStrong();
+        if(tmp >0) {
+            b.setHeart(tmp);
+            System.out.println(a.getName() +" deal" + a.getStrong() + "to" + b.getName());
+            System.out.println(b.getName() + " heart : " + b.getHeart());
+        }
+        else System.out.println(a.getName()+ " just kill "  + b.getName());
+    }
+
 }

@@ -34,7 +34,7 @@ public class FuncTest {
     }
 
     @Test
-    void testLimit(){
+    void testLimitException(){
         assertTrue(EPS_Equals(INF,sec.calc(Math.PI/2)),"test with param PI/2");
     }
 

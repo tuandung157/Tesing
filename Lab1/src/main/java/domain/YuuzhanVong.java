@@ -1,7 +1,0 @@
-package domain;
-
-public class YuuzhanVong extends AnimalStarWars {
-    public YuuzhanVong(String name, int age, double heart, double calm, double intelligent, double strong, int team) {
-        super(name, age, heart, calm, intelligent, strong, team);
-    }
-}
