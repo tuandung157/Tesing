@@ -13,7 +13,7 @@ public class Hutts extends AnimalStarWars implements Speakable {
     }
 
     @Override
-    public String makeSpeak() {
+    public String makeSpeakVote() {
         if(this.calm < 0) return (this.name + thinking.Bad);
         else return (this.name + thinking.Good);
     }

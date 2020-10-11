@@ -16,7 +16,7 @@ public class Humans extends AnimalStarWars implements Speakable {
     public String makeSpeakTo(AnimalStarWars o) {
         return this.getName() + " want to talk with " + o.getName() ;
     }
-    public String makeSpeak() {
+    public String makeSpeakVote() {
         if(this.calm <= 0) return (this.name +" "+ thinking.Normal.s);
         else return (this.name +" "+ thinking.Good.s);
     }

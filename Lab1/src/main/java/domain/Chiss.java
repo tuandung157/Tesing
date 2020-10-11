@@ -31,7 +31,7 @@ public class Chiss extends AnimalStarWars implements Speakable {
     }
 
     @Override
-    public String makeSpeak(){
+    public String makeSpeakVote(){
         return (this.getName() + " " + thinking.Normal.s);
     }
 

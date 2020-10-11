@@ -1,12 +1,9 @@
 import domain.*;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class domainTest {
@@ -40,9 +37,9 @@ public class domainTest {
         human.setName("tuandung");
 
         human.setCalm(100);
-        assertEquals(human.getName() + " "+ "wanna stop that war", human.makeSpeak(),"stop the war when calm");
+        assertEquals(human.getName() + " "+ "wanna stop that war", human.makeSpeakVote(),"stop the war when calm");
         human.setCalm(0);
-        assertEquals(human.getName() + " "+ "said what ever", human.makeSpeak(),"human make speak when calm < 0");
+        assertEquals(human.getName() + " "+ "said what ever", human.makeSpeakVote(),"human make speak when calm < 0");
     }
 
     @Test
@@ -71,14 +68,14 @@ public class domainTest {
     @Test
     void testMakeSpeak(){
         Chiss chiss = new Chiss("chiss");
-        String sentence = chiss.makeSpeak();
+        String sentence = chiss.makeSpeakVote();
         System.out.println(sentence);
         assertEquals("chiss said what ever",sentence,"check make speak of chiss");
         //change calm value
         chiss.setCalm(100);
-        assertEquals("chiss said what ever",chiss.makeSpeak(),"check make speak of chiss");
+        assertEquals("chiss said what ever",chiss.makeSpeakVote(),"check make speak of chiss");
         chiss.setCalm(0);
-        assertEquals("chiss said what ever",chiss.makeSpeak(),"check make speak of chiss");
+        assertEquals("chiss said what ever",chiss.makeSpeakVote(),"check make speak of chiss");
 
     }
     @Test
@@ -137,7 +134,7 @@ public class domainTest {
     @Test
     void testYodaMakeSpeak(){
         Yodas yoda = new Yodas("master Yoda");
-        String str = yoda.makeSpeak();
+        String str = yoda.makeSpeakVote();
         assertEquals(yoda.getName() + " wanna stop that war",str,"yoda alway speak good");
         yoda.setCalm(100);
         assertEquals(yoda.getName() + " wanna stop that war",str,"yoda alway speak good");
@@ -176,5 +173,94 @@ public class domainTest {
 
 
 //    test function in game
+    @Test
+    void testInitAnimalGame(){
+        ArrayList<AnimalStarWars> list = game.initListAnimals();
+        assertNotNull(list,"create list Animal");
+        assertEquals(11,list.size(),"create 11 object");
+    }
 
+    @Test
+    void testSelectTeam(){
+
+        ArrayList<AnimalStarWars> list = game.initListAnimals();
+        ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
+
+        listSelected.forEach(e ->{
+            String clanName;
+            clanName = e.getClass().getSimpleName();
+            switch (clanName){
+                case "Humans":
+                    assertEquals(0,e.getTeam(),"human class should be team 0");
+                    break;
+                case "Yodas":
+                    assertEquals(0,e.getTeam(),"Yoda class should be team 0");
+                    break;
+                case "Chiss":
+                    assertNotEquals(0,e.getTeam(),"Chiss class should be team 1 or 2");
+                    break;
+                case "Hutts":
+                    assertNotEquals(0,e.getTeam(),"Hutts class should be team 1 or 2");
+                    break;
+                case "Rakata":
+                    assertNotEquals(0,e.getTeam(),"Rakata class should be team 1 or 2");
+                    break;
+            }
+        });
+
+    }
+    //check age when select to team
+    @Test
+    void testCheckAge(){
+        ArrayList<AnimalStarWars> list = game.initListAnimals();
+        ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
+
+        listSelected.forEach(e ->{
+            assertTrue(e.getAge() >=18, "age of player sould be older than 18");
+        });
+    }
+
+    @Test
+    void testTriggerByObject(){
+        ArrayList<AnimalStarWars> list = game.initListAnimals();
+        ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
+        AnimalStarWars a = listSelected.get(1);
+        AnimalStarWars b = listSelected.get(2);
+        double calmA = a.getCalm();
+        double calmB = b.getCalm();
+        game.triggerByObject(a,b);
+        assertTrue(calmB > b.getCalm(),"After being triggered, his calm will be lower than he was originally");
+        assertEquals(calmA,a.getCalm(),"must be equal,because he is the trigger proactively");
+        assertEquals(100,b.getCalm(),"calm him down by the other person triggered");
+    }
+
+    @Test
+    void testAttackByObject() throws NotEnoughHeartException {
+        ArrayList<AnimalStarWars> list = game.initListAnimals();
+        ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
+        AnimalStarWars a = listSelected.get(1);
+        AnimalStarWars b = listSelected.get(2);
+
+        //game.attackByObject(a,b,false);
+        assertThrows(NotEnoughHeartException.class,()->{
+            game.attackByObject(a,b,false);
+        });
+        //a attack b but b didnt know
+        b.setHeart(1000);
+        a.setHeart(1000);
+        double heartA = a.getHeart();
+        double heartB = b.getHeart();
+        assertTrue(heartB >= b.getHeart(),"After being attacked, his heart will be lower or equal than he was originally");
+        assertEquals(heartA,a.getHeart(),"because the person who was beaten doesn't know who hit him.");
+        //assertEquals(0,b.getHeart(),"b dead");
+
+        //a attack b but b did know
+        b.setHeart(1000);
+        a.setHeart(1000);
+        heartA = a.getHeart();
+        heartB = b.getHeart();
+        game.attackByObject(b,a,true);
+        assertEquals(980,a.getHeart(),"because the person who was beaten doesn't know who hit him.");
+
+    }
 }

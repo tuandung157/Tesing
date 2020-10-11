@@ -31,7 +31,7 @@ public class Yodas extends AnimalStarWars implements Speakable {
         return this.name + " used the Force to " + o.getName() + " by spell of Yodas";
     }
 
-    public String makeSpeak(){
+    public String makeSpeakVote(){
         return(this.name +" "+ thinking.Good.s);
     }
 }

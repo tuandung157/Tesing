@@ -61,6 +61,7 @@ public abstract class AnimalStarWars {
     }
 
     public void setHeart(double heart) {
+        if(heart <= 0) heart =0;
         this.heart = heart;
     }
 
