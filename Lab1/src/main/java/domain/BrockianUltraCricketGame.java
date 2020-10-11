@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class BrockianUltraCricketGame {
+public class BrockianUltraCricketGame{
+
     public ArrayList<AnimalStarWars> team0 = new ArrayList<>();
     public ArrayList<AnimalStarWars> team1 = new ArrayList<>();
     public ArrayList<AnimalStarWars> team2 = new ArrayList<>();
 
-    public void playGame(ArrayList<AnimalStarWars> listAnimal, StatePlay state){
+    public void phaseTheGame(ArrayList<AnimalStarWars> listAnimal, StatePlay state) {
         switch (state) {
 
             case Idle:
@@ -23,6 +24,7 @@ public class BrockianUltraCricketGame {
             case Triggered:
                 System.out.println("in state Triggered");
                 int teamWin = this.triggerByTeam(team0,team1,team2);
+                System.out.println(teamWin);
                 break;
 
             case Played:

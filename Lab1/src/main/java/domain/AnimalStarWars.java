@@ -19,6 +19,9 @@ public abstract class AnimalStarWars {
         this.strong = strong;
         this.team = team;
     }
+    public AnimalStarWars(){
+    }
+
 
     @Override
     public String toString() {
@@ -49,7 +52,8 @@ public abstract class AnimalStarWars {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if(this.age <= 0) this.age = 18;
+        else this.age = age;
     }
 
     public double getHeart() {

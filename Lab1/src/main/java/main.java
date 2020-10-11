@@ -1,11 +1,10 @@
 import domain.*;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws GameAlreadyException {
 /*
         //test func
         FuncSec sec = new FuncSec();
@@ -26,8 +25,8 @@ public class main {
         //game
         BrockianUltraCricketGame game = new BrockianUltraCricketGame();
         ArrayList<AnimalStarWars> listAnimal = game.initAnimal();
-        game.playGame(listAnimal, StatePlay.Idle);
-        game.playGame(listAnimal, StatePlay.Triggered);
+        game.phaseTheGame(listAnimal, StatePlay.Idle);
+        game.phaseTheGame(listAnimal, StatePlay.Triggered);
 
 
 

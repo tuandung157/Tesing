@@ -1,14 +1,17 @@
 public class FuncSec {
+
+
     public double calc(double xRadian){
         double sec = 1;
         double eps = 0.00000000000001;
         double INF = 1.0e8;
         int i = 0;
         double sign = 1,fact =1, pow =1,element = 1;
-        if(xRadian == Math.PI/2) {
+        if(xRadian >= Math.PI/2) {
             System.out.println("infinity");
             return INF;
         }
+
         while(element > eps){
             i++;
             sign = sign * -1;

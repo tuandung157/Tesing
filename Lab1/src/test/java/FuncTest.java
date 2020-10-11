@@ -20,14 +20,19 @@ public class FuncTest {
 
         assertTrue(EPS_Equals(1/Math.cos(Math.PI/3),sec.calc(Math.PI/3)),"test with param PI/3");
         assertTrue(EPS_Equals(1/Math.cos(-Math.PI/3),sec.calc(-Math.PI/3)),"test with param -PI/3");
+
         assertTrue(EPS_Equals(1/Math.cos(Math.PI/4),sec.calc(Math.PI/4)),"test with param PI/4");
         assertTrue(EPS_Equals(1/Math.cos(-Math.PI/4),sec.calc(-Math.PI/4)),"test with param -PI/4");
+
         assertTrue(EPS_Equals(1/Math.cos(Math.PI/5),sec.calc(Math.PI/5)),"test with param PI/5");
         assertTrue(EPS_Equals(1/Math.cos(-Math.PI/5),sec.calc(-Math.PI/5)),"test with param -PI/5");
+
         assertTrue(EPS_Equals(1/Math.cos(Math.PI/6),sec.calc(Math.PI/6)),"test with param PI/6");
         assertTrue(EPS_Equals(1/Math.cos(-Math.PI/6),sec.calc(-Math.PI/6)),"test with param -PI/6");
+
         assertTrue(EPS_Equals(1/Math.cos(Math.PI/8),sec.calc(Math.PI/8)),"test with param PI/8");
         assertTrue(EPS_Equals(1/Math.cos(-Math.PI/8),sec.calc(-Math.PI/8)),"test with param -PI/8");
+
         assertTrue(EPS_Equals(1/Math.cos(Math.PI/12),sec.calc(Math.PI/12)),"test with param PI/12");
         assertTrue(EPS_Equals(1/Math.cos(-Math.PI/12),sec.calc(-Math.PI/12)),"test with param -PI/12");
 
@@ -36,6 +41,9 @@ public class FuncTest {
     @Test
     void testLimitException(){
         assertTrue(EPS_Equals(INF,sec.calc(Math.PI/2)),"test with param PI/2");
+        assertTrue(EPS_Equals(INF,sec.calc(Math.PI)),"test with param PI");
+        assertTrue(EPS_Equals(INF,sec.calc(Math.PI*3/2)),"test with param 3*PI/2");
+        assertTrue(EPS_Equals(INF,sec.calc(Math.PI*2)),"test with param 2*PI");
     }
 
 }
