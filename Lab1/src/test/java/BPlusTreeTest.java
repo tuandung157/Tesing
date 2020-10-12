@@ -23,7 +23,14 @@ class BPlusTreeTest {
         bpt.insert(1,"value");
         assertFalse(bpt.isEmpty, "isEmpty should be true");
     }
-
+    @Test
+    void testPrint(){
+        for(int i = 1; i<16;i++){
+            bpt.insert(i,"");
+        }bpt.printTree();
+        //      B+ Tree Initialized. Degree is 6
+        //      Printing level 1 :                                            4.0:();7.0:();10.0:();13.0:(); ||
+        //      Printing level 2 : 1.0:();2.0:();3.0:(); || 4.0:();5.0:();6.0:(); || 7.0:();8.0:();9.0:(); || 10.0:();11.0:();12.0:(); || 13.0:();14.0:();15.0:(); ||}
     @Test
     void testInsert() {
         bpt.insert(1, "value 1");
@@ -80,6 +87,7 @@ class BPlusTreeTest {
             assertEquals("value 22",bpt.search(22).get(0),"error when search key 22");
             assertEquals("value 27",bpt.search(27).get(0),"error when search key 27");
         });
+        bpt.printTree();
 
     }
     @Test
@@ -93,6 +101,7 @@ class BPlusTreeTest {
         for(int i = 7; i<22;i++){
             bpt.insert(i,"value " + i);
         }
+
         assertEquals(4,bpt.search(3,6).size(),"error in get number key from 3 to 6");
         assertEquals(6,bpt.search(2,7).size(),"error in get number key from 2 to 7");
         assertEquals("[2.0, 3.0, 4.0, 5.0, 6.0, 7.0]",bpt.getKeyListMiddle(2,7), "get all keys between key from 2 to 7");
