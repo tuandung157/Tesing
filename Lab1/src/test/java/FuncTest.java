@@ -14,7 +14,7 @@ public class FuncTest {
 
     @Test
     void testResult(){
-        assertEquals(1/Math.cos(0),sec.calc(0),"test with param PI/2");
+        assertEquals(1/Math.cos(0),sec.calc(0),"test with param 0");
         assertEquals(1/Math.cos(Math.PI), sec.calc(Math.PI), "test with param PI");
         assertEquals(1/Math.cos(-Math.PI), sec.calc(-Math.PI), "test with param -PI");
 
@@ -41,9 +41,8 @@ public class FuncTest {
     @Test
     void testLimitException(){
         assertTrue(EPS_Equals(INF,sec.calc(Math.PI/2)),"test with param PI/2");
-        assertTrue(EPS_Equals(INF,sec.calc(Math.PI)),"test with param PI");
         assertTrue(EPS_Equals(INF,sec.calc(Math.PI*3/2)),"test with param 3*PI/2");
-        assertTrue(EPS_Equals(INF,sec.calc(Math.PI*2)),"test with param 2*PI");
+        assertTrue(EPS_Equals(INF,sec.calc(Math.PI*5/2)),"test with param 5PI/2");
     }
 
 }

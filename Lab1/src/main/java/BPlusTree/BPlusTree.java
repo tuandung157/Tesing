@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.Queue;
 
 public class BPlusTree {
-    private int m;
-    private Node root;
+    public int m;
+    public Node root;
+    public int levelNumber ;
+    public boolean isEmpty;
     public BPlusTree() {
-
+        this.isEmpty = true;
     }
     public void initialize(int order) {
         // At initialization, order of the tree is set to m. Root is set to null
@@ -51,7 +53,7 @@ public class BPlusTree {
                 splitExternalNode(curr, this.m);
             }
         }
-
+        this.isEmpty =false;
     }
 
     private void insertWithinExternalNode(double key, String value, Node node) {
@@ -216,8 +218,8 @@ public class BPlusTree {
         queue.add(this.root);
         queue.add(null);
         Node curr = null;
-        int levelNumber = 2;
-        System.out.println("Printing level 1");
+        levelNumber = 1;
+        System.out.print("Printing level 1 : ");
         while (!queue.isEmpty()) {
             curr = queue.poll();
             if (null == curr) {
@@ -225,12 +227,11 @@ public class BPlusTree {
                 if (queue.peek() == null) {
                     break;
                 }
-                System.out.println("\n" + "Printing level " + levelNumber++);
+                System.out.print(" Printing level " + ++levelNumber +" : ");
                 continue;
             }
 
             printNode(curr);
-
             if (curr.getChildren().isEmpty()) {
                 break;
             }
@@ -244,10 +245,9 @@ public class BPlusTree {
             printNode(curr);
             curr = curr.getNext();
         }
-
     }
 
-    public void printNode(Node curr) {
+    private void printNode(Node curr) {
         for (int i = 0; i < curr.getKeys().size(); i++) {
             System.out.print(curr.getKeys().get(i).getKey() + ":(");
             String values = "";
@@ -256,7 +256,7 @@ public class BPlusTree {
             }
             System.out.print(values.isEmpty() ? ");" : values.substring(0, values.length() - 1) + ");");
         }
-        System.out.print("||");
+        System.out.print(" || ");
     }
 
     public int binarySearchWithinInternalNode(double key, List<Key> keyList) {
@@ -292,14 +292,12 @@ public class BPlusTree {
         List<String> searchValues = null;
 
         Node curr = this.root;
-        // Traverse to the corresponding external node that would 'should'
-        // contain this key
+        // Traverse to the corresponding external node that would 'should' contain this key
         while (curr.getChildren().size() != 0) {
             curr = curr.getChildren().get(binarySearchWithinInternalNode(key, curr.getKeys()));
         }
         List<Key> keyList = curr.getKeys();
-        // Do a linear search in this node for the key. Set the parameter
-        // 'searchValues' only if success
+        // Do a linear search in this node for the key. Set the parameter 'searchValues' only if success
         for (int i = 0; i < keyList.size(); i++) {
             if (key == keyList.get(i).getKey()) {
                 searchValues = keyList.get(i).getValues();
@@ -335,6 +333,34 @@ public class BPlusTree {
         }
 
         return searchKeys;
+    }
+
+    public void removeKey(double key){
+        this.search(key);
+        Node curr = this.root;
+        while (curr.getChildren().size() != 0) {
+            curr = curr.getChildren().get(binarySearchWithinInternalNode(key, curr.getKeys()));
+        }
+        curr.getKeys().remove((int) key);
+    }
+    public String getKeyListMiddle(double a,double b){
+        ArrayList list = new ArrayList();
+        String str;
+        this.search(a,b).forEach(e ->{
+            list.add(e.getKey());
+        });
+        str = list.toString();
+        return str;
+    }
+
+    public String getValueListMiddle(double a,double b){
+        ArrayList list = new ArrayList();
+        String str;
+        this.search(a,b).forEach(e ->{
+            list.add(e.getValues());
+        });
+        str = list.toString();
+        return str;
     }
 
 }
