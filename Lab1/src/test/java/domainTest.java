@@ -1,6 +1,6 @@
 import domain.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,11 +9,16 @@ import java.util.ArrayList;
 public class domainTest {
     private BrockianUltraCricketGame game;
     private ArrayList<AnimalStarWars> list;
+
     @BeforeEach
     void init(){
         game = new BrockianUltraCricketGame();
         System.out.println("game on");
-        //list = game.initAnimal();
+        list = game.initListAnimals();
+    }
+    @AfterEach
+    void clear(){
+        list.clear();
     }
     //human
     @Test

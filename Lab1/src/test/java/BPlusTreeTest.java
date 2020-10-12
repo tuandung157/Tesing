@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BPlusTreeTest {
     private BPlusTree bpt;
-
-    @BeforeEach
+    @BeforeAll
     void setUp() {
         bpt = new BPlusTree();
         bpt.initialize(6);
