@@ -148,7 +148,7 @@ public class domainTest {
     }
 
     @Test
-    void testYodaMakeSpeakTo(){
+    void testYodaHealTo(){
         Yodas yoda = new Yodas("master Yoda");
         Humans human = new Humans("tuandung",23,100,1000,100,100,0,100);
 
@@ -184,7 +184,16 @@ public class domainTest {
         assertNotNull(list,"create list Animal");
         assertEquals(11,list.size(),"create 11 object");
     }
+    //check age when select to team
+    @Test
+    void testCheckAge(){
+        ArrayList<AnimalStarWars> list = game.initListAnimals();
+        ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
 
+        listSelected.forEach(e ->{
+            assertTrue(e.getAge() >=18, "age of player should be older than 18");
+        });
+    }
     @Test
     void testSelectTeam(){
 
@@ -194,6 +203,7 @@ public class domainTest {
         listSelected.forEach(e ->{
             String clanName;
             clanName = e.getClass().getSimpleName();
+            //human and yodas must be same team
             switch (clanName){
                 case "Humans":
                     assertEquals(0,e.getTeam(),"human class should be team 0");
@@ -214,20 +224,10 @@ public class domainTest {
         });
 
     }
-    //check age when select to team
-    @Test
-    void testCheckAge(){
-        ArrayList<AnimalStarWars> list = game.initListAnimals();
-        ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
 
-        listSelected.forEach(e ->{
-            assertTrue(e.getAge() >=18, "age of player sould be older than 18");
-        });
-    }
 
     @Test
     void testTriggerByObject(){
-        ArrayList<AnimalStarWars> list = game.initListAnimals();
         ArrayList<AnimalStarWars> listSelected = game.selectTeam(list);
         AnimalStarWars a = listSelected.get(1);
         AnimalStarWars b = listSelected.get(2);

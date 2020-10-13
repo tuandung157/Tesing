@@ -39,9 +39,9 @@ public class FuncTest {
 
     @Test
     void testLimitException(){
-        assertTrue(Math.abs(sec.calc(Math.PI/2)) > INF,"test with param PI/2");
-        assertTrue(Math.abs(sec.calc(3*Math.PI/2)) > INF,"test with param 3*PI/2");
-        assertTrue(Math.abs(sec.calc(5*Math.PI/2)) > INF, "test with param 5PI/2");
+        assertTrue(Math.abs(sec.calc(Math.PI/2)) >= INF,"test with param PI/2");
+        assertTrue(Math.abs(sec.calc(3*Math.PI/2)) >= INF,"test with param 3*PI/2");
+        assertTrue(Math.abs(sec.calc(5*Math.PI/2)) >= INF, "test with param 5PI/2");
     }
 
 }

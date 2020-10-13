@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BPlusTreeTest {
     private BPlusTree bpt;
-    @BeforeAll
+    @BeforeEach
     void setUp() {
         bpt = new BPlusTree();
-        bpt.initialize(6);
+        bpt.initialize(6);// my variant
     }
     @Test
-    void testEmplyCheck(){
+    void testIsEmply(){
         assertTrue(bpt.isEmpty, "isEmpty should be true");
         bpt.insert(1,"value");
         assertFalse(bpt.isEmpty, "isEmpty should be true");
@@ -35,9 +35,10 @@ class BPlusTreeTest {
     void testInsert() {
         bpt.insert(1, "value 1");
         bpt.insert(2, "value 2");
-        bpt.insert(3, "value 3");
         bpt.insert(4, "value 4");
         bpt.insert(5, "value 5");
+        bpt.insert(3, "value 3");
+
         bpt.printTree();
         assertEquals(5,bpt.root.getKeys().size(),"should be 5 key in root");
         assertEquals(1,bpt.levelNumber,"level Number should be level 1");
@@ -123,8 +124,8 @@ class BPlusTreeTest {
 
         bpt.removeKey(3);
         assertNull(bpt.search(3),"error method delete key");
-        assertEquals("value 1",bpt.search(1).get(0),"key must be exist");
 
+        assertEquals("value 1",bpt.search(1).get(0),"key must be exist");
         bpt.removeKey(1);
         assertNull(bpt.search(1),"error method delete key");
     }

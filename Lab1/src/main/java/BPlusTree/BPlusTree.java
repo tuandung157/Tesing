@@ -127,9 +127,6 @@ public class BPlusTree {
                 Node middle = new Node();
                 Node rightPart = new Node();
 
-                // since internal nodes follow a split like the b tree, right
-                // part contains elements right of the mid element, and the
-                // middle becomes parent of right part
                 rightPart.setKeys(curr.getKeys().subList(midIndex + 1, curr.getKeys().size()));
                 rightPart.setParent(middle);
 
@@ -141,8 +138,6 @@ public class BPlusTree {
 
                 int lastChildOfLeft = childrenOfCurr.size() - 1;
 
-                // update the children that have to be sent to the right part
-                // from the split node
                 for (int i = childrenOfCurr.size() - 1; i >= 0; i--) {
                     List<Key> currKeysList = childrenOfCurr.get(i).getKeys();
                     if (middle.getKeys().get(0).getKey() <= currKeysList.get(0).getKey()) {
@@ -156,8 +151,7 @@ public class BPlusTree {
 
                 rightPart.setChildren(childrenOfRight);
 
-                // update the overfull node to contain just the left part and
-                // update its children
+                // update the overfull node to contain just the left part and child
                 curr.getChildren().subList(lastChildOfLeft + 1, childrenOfCurr.size()).clear();
                 curr.getKeys().subList(midIndex, curr.getKeys().size()).clear();
 
@@ -170,8 +164,7 @@ public class BPlusTree {
     private void mergeInternalNodes(Node mergeFrom, Node mergeInto) {
         Key keyToBeInserted = mergeFrom.getKeys().get(0);
         Node childToBeInserted = mergeFrom.getChildren().get(0);
-        // Find the index where the key has to be inserted to by doing a binary
-        // search
+        // Find the index where the key has to be inserted to by doing a binary search
         int indexToBeInsertedAt = binarySearchWithinInternalNode(keyToBeInserted.getKey(), mergeInto.getKeys());
         int childInsertPos = indexToBeInsertedAt;
         if (keyToBeInserted.getKey() <= childToBeInserted.getKeys().get(0).getKey()) {
@@ -184,23 +177,17 @@ public class BPlusTree {
         // Update Linked List of external nodes
         if (!mergeInto.getChildren().isEmpty() && mergeInto.getChildren().get(0).getChildren().isEmpty()) {
 
-            // If merge is happening at the last element, then only pointer
-            // between new node and previously last element
-            // needs to be updated
             if (mergeInto.getChildren().size() - 1 != childInsertPos
                     && mergeInto.getChildren().get(childInsertPos + 1).getPrev() == null) {
                 mergeInto.getChildren().get(childInsertPos + 1).setPrev(mergeInto.getChildren().get(childInsertPos));
                 mergeInto.getChildren().get(childInsertPos).setNext(mergeInto.getChildren().get(childInsertPos + 1));
             }
-            // If merge is happening at the last element, then only pointer
-            // between new node and previously last element
-            // needs to be updated
+
             else if (0 != childInsertPos && mergeInto.getChildren().get(childInsertPos - 1).getNext() == null) {
                 mergeInto.getChildren().get(childInsertPos).setPrev(mergeInto.getChildren().get(childInsertPos - 1));
                 mergeInto.getChildren().get(childInsertPos - 1).setNext(mergeInto.getChildren().get(childInsertPos));
             }
-            // If merge is happening in between, then the next element and the
-            // previous element's prev and next pointers have to be updated
+
             else {
                 mergeInto.getChildren().get(childInsertPos)
                         .setNext(mergeInto.getChildren().get(childInsertPos - 1).getNext());
@@ -268,8 +255,6 @@ public class BPlusTree {
         if (key < keyList.get(st).getKey()) {
             return 0;
         }
-        // Return array size + 1 as the new positin of the key if greater than
-        // last element
         if (key >= keyList.get(end).getKey()) {
             return keyList.size();
         }
@@ -314,8 +299,7 @@ public class BPlusTree {
         //System.out.println("Searching between keys " + key1 + ", " + key2);
         List<Key> searchKeys = new ArrayList<>();
         Node currNode = this.root;
-        // Traverse to the corresponding external node that would 'should'
-        // contain starting key (key1)
+
         while (currNode.getChildren().size() != 0) {
             currNode = currNode.getChildren().get(binarySearchWithinInternalNode(key1, currNode.getKeys()));
         }
