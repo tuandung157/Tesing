@@ -1,38 +1,41 @@
 public class funcTaylor {
 
+    public double mainFunction(double x){
+        double res = 0;
+        if(x <= 0) res = ((((cot(x)/csc(x))/cos(x))-csc(x)) + cot(x)) + (((sec(x)*pow(cos(x),2))) + (csc(x)-sin(x)));
+        else res =((log_5(x)+log_5(x) + pow(ln(x),2)) * ((log_5(x) - log_3(x)) + pow(log_3(x),2)));
+        System.out.println("result " +res);
+        return res;
+    }
     public double preProcess(double x){
         x = x% (Math.PI*2);
         return x;
     }
-    public double cos(double rad){
-        //preProcess(rad);
-        double cos = 1;
-        double eps = 1.0E-8;
-        double INF = 1.0E8;
-        int i = 0;
-        double sign = 1,fact =1, pow =1,element = 1;
+    public double sin(double x){
+        x = preProcess(x);
 
-        while(Math.abs(element) > eps){
-            i++;
-            sign = sign * -1;
-            fact = fact * (2 * i -1) * (2*i);
-            pow = pow * rad * rad;
-            element =  pow / fact;
-            cos = cos + sign *element;
-        }
-//        cos = Math.round(cos * 100000000d) / 100000000d;
-        System.out.println("cos " + cos);
-        return cos;
+        double thisEps = 1E-10;
+        double before, after, xn;
+        int n;
+        after = x;
+        n = 1;
+        xn = x;
+
+        do {
+            before = after;
+            xn *= (-1)*x*x/2/n/(2*n+1);
+            after += xn;
+            n++;
+        } while (Math.abs(Math.abs(after) - Math.abs(before)) > thisEps);
+        return after;
     }
 
-    public double sin(double rad){
-        //preProcess(rad);
-        double sin = 0;
-        double cos = this.cos(rad);
-        sin = Math.sqrt( 1 - cos*cos);
-//        sin = Math.round(sin * 100000000d) / 100000000d;
-        System.out.println("sin " + sin);
-        return sin;
+    public double cos(double x){
+        x = preProcess(x);
+        //System.out.println(x);
+        double sinx = sin(x);
+        if ((x < -Math.PI/2) && (x > -3*Math.PI/2)) return -Math.sqrt(1-sinx*sinx);
+        else return Math.sqrt(1- sinx*sinx);
     }
 
     public double tan(double rad){
