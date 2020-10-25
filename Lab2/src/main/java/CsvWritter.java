@@ -13,6 +13,7 @@ public class CsvWritter {
             sb.append("Value"); sb.append(',');
             sb.append("sin(x)"); sb.append(',');
             sb.append("cos(x)"); sb.append(',');
+            sb.append("cot(x)"); sb.append(',');
             sb.append("sec(x)"); sb.append(',');
             sb.append("csc(x)"); sb.append(',');
             sb.append("ln(x)"); sb.append(',');
@@ -35,23 +36,19 @@ public class CsvWritter {
 
     public void write(Double x) {
         System.out.println(x);
-        if (x<=0){
+
             sb.append(x); sb.append(',');
             sb.append(funcTaylor.mainFunction(x)); sb.append(',');
             sb.append(funcTaylor.sin(x)); sb.append(',');
             sb.append(funcTaylor.cos(x)); sb.append(',');
+            sb.append(funcTaylor.cot(x)); sb.append(',');
             sb.append(funcTaylor.sec(x)); sb.append(',');
             sb.append(funcTaylor.csc(x)); sb.append(',');
+        if (x<=0){
             sb.append("Null"); sb.append(',');
             sb.append("Null"); sb.append(',');
             sb.append("Null"); sb.append("\n");
         } else {
-            sb.append(x); sb.append(',');
-            sb.append(funcTaylor.mainFunction(x)); sb.append(',');
-            sb.append(funcTaylor.sin(x)); sb.append(',');
-            sb.append(funcTaylor.cos(x)); sb.append(',');
-            sb.append(funcTaylor.sec(x)); sb.append(',');
-            sb.append(funcTaylor.csc(x)); sb.append(',');
             sb.append(funcTaylor.ln(x)); sb.append(',');
             sb.append(funcTaylor.log_3(x)); sb.append(',');
             sb.append(funcTaylor.log_5(x)); sb.append("\n");
