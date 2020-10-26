@@ -40,7 +40,7 @@ public class CsvWritter {
         System.out.println(x);
         if (x<=0){
             sb.append(x); sb.append(',');
-            sb.append(funcTaylor.mainFunction(x)); sb.append(',');
+            sb.append(funcTaylor.functionSystem(x)); sb.append(',');
             sb.append(funcTaylor.sin(x)); sb.append(',');
             sb.append(funcTaylor.cos(x)); sb.append(',');
             sb.append(funcTaylor.cot(x)); sb.append(',');
@@ -51,7 +51,7 @@ public class CsvWritter {
             sb.append("Null"); sb.append("\n");
         } else {
             sb.append(x); sb.append(',');
-            sb.append(funcTaylor.mainFunction(x)); sb.append(',');
+            sb.append(funcTaylor.functionSystem(x)); sb.append(',');
             sb.append(funcTaylor.sin(x)); sb.append(',');
             sb.append(funcTaylor.cos(x)); sb.append(',');
             sb.append(funcTaylor.cot(x)); sb.append(',');

@@ -52,7 +52,7 @@ public class TestFunctionLogaLevel2 {
     }
 
     @ParameterizedTest
-    @MethodSource("testThirdPartGenerated")
+    @MethodSource("testSecondPartGenerated")
     void testSecondPart(double x){
         Assertions.assertEquals(mathLoga(x), FuncTaylor.funcLoga(x), eps,
                 "Wrong value. Тест: third part for funcLoga(" + x +")");
@@ -77,22 +77,22 @@ public class TestFunctionLogaLevel2 {
                 "Wrong value. Тест: third part for funcLoga(" + x +")");
     }
 
-    static ArrayList<Double> testLimitLeft(){
-        double start = 0;
-        double end = 1.9;
-        ArrayList<Double> res = new ArrayList<Double>();
-        while (start <= end){
-            start =Math.round(start* 100000d) / 100000d;
-            res.add(start);
-            start += stepStatic;
-        }
-        return  res;
-    }
-
-    @ParameterizedTest
-    @MethodSource("testThirdPartGenerated")
-    void testLimitLeft(double x){
-        Assertions.assertEquals(mathLoga(x), FuncTaylor.funcLoga(x), eps,
-                "Wrong value. Тест: limit left part for funcLoga(" + x +")");
-    }
+//    static ArrayList<Double> testLimitLeft(){
+//        double start = 0;
+//        double end = 1.9;
+//        ArrayList<Double> res = new ArrayList<Double>();
+//        while (start <= end){
+//            start =Math.round(start* 100000d) / 100000d;
+//            res.add(start);
+//            start += stepStatic;
+//        }
+//        return  res;
+//    }
+//
+//    @ParameterizedTest
+//    @MethodSource("testLimitLeft")
+//    void testLimitLeft(double x){
+//        Assertions.assertEquals(mathLoga(x), FuncTaylor.funcLoga(x), eps,
+//                "Wrong value. Тест: limit left part for funcLoga(" + x +")");
+//    }
 }

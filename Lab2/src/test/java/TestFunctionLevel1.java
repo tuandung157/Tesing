@@ -1,14 +1,8 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
-
-import static org.mockito.Mockito.*;
 
 public class TestFunctionLevel1 {
     static double steps =0.1;
@@ -27,7 +21,7 @@ public class TestFunctionLevel1 {
         else return mathLoga(x);
     }
     // for function main
-    static ArrayList<Double> testFunction(){
+    static ArrayList<Double> testFunctionSystem(){
         double start = -10;
         double end = 10;
 
@@ -41,10 +35,12 @@ public class TestFunctionLevel1 {
     }
 
     @ParameterizedTest
-    @MethodSource("testFunction")
+    @MethodSource("testFunctionSystem")
     void testFunction(double x){
-        Assertions.assertEquals(mainFunction(x), FuncTaylor.mainFunction(x), eps,
+        Assertions.assertEquals(mainFunction(x), FuncTaylor.functionSystem(x), eps,
                 "Wrong value. Тест: first part for mainFunction(" + x +")");
     }
+
+
 
 }

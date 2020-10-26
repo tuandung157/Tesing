@@ -1,8 +1,12 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
+
+import static org.mockito.Mockito.when;
 
 public class TestImplementFunctionLevel3 {
     //test cos
@@ -100,4 +104,14 @@ public class TestImplementFunctionLevel3 {
         Assertions.assertEquals(Math.log(x)/Math.log(5), FuncTaylor.log_5(x), eps,
                 "Wrong value. Тест: csc(" + x +")");
     }
+
+
+//    @Test
+//    public void test(){
+//        FuncTaylor test = Mockito.mock(FuncTaylor.class);
+//
+//        when(test.tan(0)).thenReturn(0.0);
+//
+//        Assertions.assertEquals(test.tan(0),0.0);
+//    }
 }

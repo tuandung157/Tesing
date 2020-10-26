@@ -1,6 +1,6 @@
 public class FuncTaylor {
 
-    public static double mainFunction(double x){
+    public static double functionSystem(double x){
         if(x == 0) return Double.POSITIVE_INFINITY;
         double res = 0;
         if(x <= 0) res = funTrigo(x);
