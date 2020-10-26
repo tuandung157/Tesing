@@ -1,17 +1,25 @@
-public class funcTaylor {
+public class FuncTaylor {
 
-    public double mainFunction(double x){
+    public static double mainFunction(double x){
+        if(x == 0) return Double.POSITIVE_INFINITY;
         double res = 0;
-        if(x <= 0) res = ((((cot(x)/csc(x))/cos(x))-csc(x)) + cot(x)) + (((sec(x)*pow(cos(x),2))) + (csc(x)-sin(x)));
-        else res =((log_5(x)+log_5(x) + pow(ln(x),2)) * ((log_5(x) - log_3(x)) + pow(log_3(x),2)));
+        if(x <= 0) res = funTrigo(x);
+        else res = funcLoga(x);
         System.out.println("result " +res);
         return res;
     }
-    public double preProcess(double x){
+    public static double funTrigo(double x){
+
+        return (((((cot(x)/csc(x))/cos(x))-csc(x)) + cot(x)) + (((pow(sec(x)*cos(x),2))) + (csc(x)-sin(x))));
+    }
+    public static double funcLoga(double x){
+        return pow((pow(log_5(x)+log_5(x) + ln(x),2) * ((log_5(x) - log_3(x)) +log_3(x))),3);
+    }
+    public static double preProcess(double x){
         x = x% (Math.PI*2);
         return x;
     }
-    public double sin(double x){
+    public static double sin(double x){
         x = preProcess(x);
 
         double thisEps = 1E-10;
@@ -30,26 +38,22 @@ public class funcTaylor {
         return after;
     }
 
-    public double cos(double x){
-        x = preProcess(x);
-        //System.out.println(x);
-        double sinx = sin(x);
-        if ((x < -Math.PI/2) && (x > -3*Math.PI/2)) return -Math.sqrt(1-sinx*sinx);
-        else return Math.sqrt(1- sinx*sinx);
+    public static double cos(double x){
+        return sin(x+Math.PI/2);
     }
 
     public double tan(double rad){
 
         return sin(rad)/cos(rad);
     }
-    public double cot(double rad){
+    public static double cot(double rad){
         return cos(rad)/sin(rad);
     }
 
-    public double sec(double rad){
+    public static double sec(double rad){
         return 1/cos(rad);
     }
-    public double csc(double rad){
+    public static double csc(double rad){
         return 1/sin(rad);
     }
     public static double pow(double x, int n){
@@ -60,7 +64,7 @@ public class funcTaylor {
         if (n < 0) return 1/res;
         return res;
     }
-    public double ln(double x){
+    public static double ln(double x){
         double thisEps = 1E-10;
         double before, after, xn, base;
         int n;
@@ -79,11 +83,11 @@ public class funcTaylor {
         return 2*after;
     }
 
-    public double log_3(double x){
+    public static double log_3(double x){
         return ln(x)/ln(3);
     }
 
-    public double log_5(double x){
+    public static double log_5(double x){
         return ln(x)/ln(5);
     }
 }

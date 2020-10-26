@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 
 public class CsvWritter {
     private File file;
-    funcTaylor funcTaylor = new funcTaylor();
+    FuncTaylor funcTaylor = new FuncTaylor();
     StringBuilder sb = new StringBuilder();
 
     public CsvWritter(String fileName, double start, double end, double step){
@@ -21,7 +21,9 @@ public class CsvWritter {
             sb.append("log_5(x)"); sb.append("\n");
 
             Double i = start;
+
             while (i < end) {
+                i=Math.round(i * 100000d) / 100000d;
                 this.write(i);
                 i += step;
             }
@@ -36,7 +38,7 @@ public class CsvWritter {
 
     public void write(Double x) {
         System.out.println(x);
-
+        if (x<=0){
             sb.append(x); sb.append(',');
             sb.append(funcTaylor.mainFunction(x)); sb.append(',');
             sb.append(funcTaylor.sin(x)); sb.append(',');
@@ -44,11 +46,17 @@ public class CsvWritter {
             sb.append(funcTaylor.cot(x)); sb.append(',');
             sb.append(funcTaylor.sec(x)); sb.append(',');
             sb.append(funcTaylor.csc(x)); sb.append(',');
-        if (x<=0){
             sb.append("Null"); sb.append(',');
             sb.append("Null"); sb.append(',');
             sb.append("Null"); sb.append("\n");
         } else {
+            sb.append(x); sb.append(',');
+            sb.append(funcTaylor.mainFunction(x)); sb.append(',');
+            sb.append(funcTaylor.sin(x)); sb.append(',');
+            sb.append(funcTaylor.cos(x)); sb.append(',');
+            sb.append(funcTaylor.cot(x)); sb.append(',');
+            sb.append(funcTaylor.sec(x)); sb.append(',');
+            sb.append(funcTaylor.csc(x)); sb.append(',');
             sb.append(funcTaylor.ln(x)); sb.append(',');
             sb.append(funcTaylor.log_3(x)); sb.append(',');
             sb.append(funcTaylor.log_5(x)); sb.append("\n");
