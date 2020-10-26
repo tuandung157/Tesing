@@ -1,5 +1,5 @@
 public class FuncTaylor {
-
+    double eps = 1E-10;
     public static double functionSystem(double x){
         if(x == 0) return Double.POSITIVE_INFINITY;
         double res = 0;
