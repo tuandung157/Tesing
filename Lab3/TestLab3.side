@@ -1,0 +1,243 @@
+{
+  "id": "b9c0c44f-8a9e-4d26-99f1-7e4017b679c4",
+  "version": "2.0",
+  "name": "TestLab3",
+  "url": "https://market.yandex.ru/",
+  "tests": [{
+    "id": "92c328b8-7d10-4d64-93f8-7ce2974716ab",
+    "name": "buy",
+    "commands": [{
+      "id": "a0a7cb22-2b68-434b-ae73-390ff182d71a",
+      "comment": "",
+      "command": "open",
+      "target": "https://market.yandex.ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1649cab5-909f-4487-b821-c9f5ccf7a313",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7bca538f-f689-4795-b3c5-d594ce237167",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@id='header-search']",
+      "targets": [
+        ["id=header-search", "id"],
+        ["name=text", "name"],
+        ["css=#header-search", "css:finder"],
+        ["xpath=//input[@id='header-search']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05228529-b0cc-4953-8630-6cbd7ac55f5a",
+      "comment": "",
+      "command": "type",
+      "target": "id=header-search",
+      "targets": [
+        ["id=header-search", "id"],
+        ["name=text", "name"],
+        ["css=#header-search", "css:finder"],
+        ["xpath=//input[@id='header-search']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "nutella"
+    }, {
+      "id": "fa6cf7b6-4b49-49e7-80c3-cb85836f5437",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@type='submit']",
+      "targets": [
+        ["css=.\\_1XiEJDPVpk", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Найти')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "db9912ac-841d-44c3-a7ad-8d974c284c8a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[2]/div/div/div/div/a/div",
+      "targets": [
+        ["css=.XTSL4OaxYO:nth-child(1) .Q2TzG3eu2W", "css:finder"],
+        ["xpath=//div[2]/div/div/div/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7951e959-4382-47aa-a553-51f906d0ef23",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//article/div[2]/div/div",
+      "targets": [
+        ["css=.\\_1_IxNTwqll:nth-child(1) .\\_1CXljk9rtd", "css:finder"],
+        ["xpath=//article/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07bc857f-0494-4fc1-ab73-23b80b1b31bc",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//article/div[2]/div[2]/div",
+      "targets": [
+        ["css=.\\_1_IxNTwqll:nth-child(1) .\\_2UmyXf5e76", "css:finder"],
+        ["xpath=//article/div[2]/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "94cdf32b-071f-4c95-b971-38664b4b3bed",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[4]/div/div/a/span/div/span",
+      "targets": [
+        ["css=.WClIE_05jn .mSwwwbBehQ", "css:finder"],
+        ["xpath=//div[4]/div/div/a/span/div/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6313cc20-8d4c-420b-a797-3f0323dc6f75",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "8e3e142a-3c5d-4c2d-b4e8-aa96a14e69a1",
+    "name": "login",
+    "commands": [{
+      "id": "c25cf6e4-c798-4014-b4a0-345bae77ffc9",
+      "comment": "",
+      "command": "open",
+      "target": "https://market.yandex.ru/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5ebf6f2c-e45f-40f1-ae68-729bf8a18b0d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a4f14992-8006-4f1b-a800-1b21d01f3a12",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Войти",
+      "targets": [
+        ["linkText=Войти", "linkText"],
+        ["css=.\\_1xlw1z4vqj", "css:finder"],
+        ["xpath=//a[contains(@href, 'https://passport.yandex.ru/auth?origin=market_desktop_header&retpath=https%3A%2F%2Fmarket.yandex.ru%2F')]", "xpath:href"],
+        ["xpath=//div[5]/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Войти')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win5708",
+      "windowTimeout": 2000
+    }, {
+      "id": "d7fd0671-2a12-43d6-901a-68f487d6fbe7",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "root",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "040c6acd-d547-4a62-9187-a1b0cda9f969",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win5708}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "20c7cd4f-f1ef-4465-aa6f-dcc21ad25830",
+      "comment": "",
+      "command": "click",
+      "target": "id=passp-field-login",
+      "targets": [
+        ["id=passp-field-login", "id"],
+        ["name=login", "name"],
+        ["css=#passp-field-login", "css:finder"],
+        ["xpath=//input[@id='passp-field-login']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/div/form/div/span/input", "xpath:idRelative"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4c4781b4-77d6-4620-b245-c4ecbe68b0a8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Button2_view_action",
+      "targets": [
+        ["css=.Button2_view_action", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/div/form/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Войти')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ad72439-0ce9-4f18-99ad-0a89a030331b",
+      "comment": "",
+      "command": "type",
+      "target": "id=passp-field-passwd",
+      "targets": [
+        ["id=passp-field-passwd", "id"],
+        ["name=passwd", "name"],
+        ["css=#passp-field-passwd", "css:finder"],
+        ["xpath=//input[@id='passp-field-passwd']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[2]/span/input", "xpath:idRelative"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": "1571997"
+    }, {
+      "id": "e59fa300-9679-4dcd-bfd4-f50ffd1467a6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Button2_view_action",
+      "targets": [
+        ["css=.Button2_view_action", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Войти')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1b7a7ae-789e-4671-9f20-aff6bf546c63",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "985adb91-e49f-4116-bab3-a1be4ff871b9",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${root}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5b96756-b25b-49aa-ac2a-d999d0aa6dbd",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "585f5d0a-daac-48f2-a6ba-512c9c3aa033",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["92c328b8-7d10-4d64-93f8-7ce2974716ab"]
+  }],
+  "urls": ["https://market.yandex.ru/"],
+  "plugins": []
+}
