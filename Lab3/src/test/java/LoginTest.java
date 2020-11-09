@@ -1,20 +1,19 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginTest {
+    private static WebDriver driver;
+    @BeforeEach
+    public void setUp(){
+        driver = WebDriverInit.init();
+    }
     @Test
     public void login(){
-        WebDriver driver;
-        System.setProperty("webdriver.chrome.driver","D:\\Projects\\Tesing\\Lab3\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.get("https://market.yandex.ru/");
         String winHandleBefore = driver.getWindowHandle();
         //find login button
@@ -45,10 +44,9 @@ public class LoginTest {
         driver.switchTo().window(winHandleBefore);
         System.out.println(driver.getCurrentUrl());
 
-        //load login
+        //wait load login
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/noindex/div/div/div[2]/div[3]/div[1]/div[5]/div/div/div/div/button/div/img")));
 
-        ///html/body/div[2]/div[3]/noindex/div/div/div[2]/div[3]/div[1]/div[5]/div/div/div/div/button/div/img
         //click avatar
         WebElement avatar = driver.findElement(By.xpath("/html/body/div[2]/div[3]/noindex/div/div/div[2]/div[3]/div[1]/div[5]/div/div/div/div/button/div/img"));
         avatar.click();
@@ -57,4 +55,28 @@ public class LoginTest {
         Assertions.assertEquals("p3400testtpo@yandex.ru",checkUser.getText(),"need to the same user");
     }
 
+    @Test
+    public void changeProfile(){
+        login();
+        //navigative to profile
+        driver.navigate().to("https://passport.yandex.ru/profile/public");
+
+        WebElement userName = driver.findElement(By.xpath("//*[@id=\"display_name\"]"));
+        String curName = userName.getAttribute("value");
+        String nameChange = "";
+
+        //2 option for the name
+        if(curName.equals("le"))  nameChange = "anh";
+        else nameChange = "le";
+        //clear name
+        for(int i =0; i< 5; i++) {
+            userName.sendKeys(Keys.BACK_SPACE);
+        }
+        System.out.println("name change "+nameChange);
+        //input new name
+        userName.sendKeys(nameChange);
+        //save new name
+        WebElement saveButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/form/button"));
+        saveButton.click();
+    }
 }

@@ -65,7 +65,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
-  <component name="RunManager" selected="JUnit.LoginTest.login">
+  <component name="RunManager" selected="JUnit.BuyTest.testBuy">
     <configuration name="Lab3" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Lab3" />
@@ -86,31 +86,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BuyTest.buy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BuyTest.testBuy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Lab3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BuyTest" />
-      <option name="METHOD_NAME" value="buy" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTest1.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Lab3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTest1" />
-      <option name="METHOD_NAME" value="login" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Lab3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTest" />
-      <option name="METHOD_NAME" value="login" />
+      <option name="METHOD_NAME" value="testBuy" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,22 +106,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="selenium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SelectTest.BuyAlotProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Lab3" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="selenium" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="SelectTest" />
+      <option name="METHOD_NAME" value="BuyAlotProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SelectTest.selectAlotProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SelectTest" />
+      <option name="METHOD_NAME" value="selectAlotProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SelectTest.selectManyKindProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SelectTest" />
+      <option name="METHOD_NAME" value="selectManyKindProduct" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginTest.login" />
-        <item itemvalue="JUnit.selenium" />
+        <item itemvalue="JUnit.BuyTest.testBuy" />
         <item itemvalue="JUnit.SearchTest.searchBar" />
-        <item itemvalue="JUnit.BuyTest.buy" />
-        <item itemvalue="JUnit.LoginTest1.login" />
+        <item itemvalue="JUnit.SelectTest.selectManyKindProduct" />
+        <item itemvalue="JUnit.SelectTest.selectAlotProduct" />
+        <item itemvalue="JUnit.SelectTest.BuyAlotProduct" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +155,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603902139574</updated>
       <workItem from="1603902140820" duration="675000" />
-      <workItem from="1604700666367" duration="27045000" />
+      <workItem from="1604700666367" duration="60611000" />
     </task>
     <servers />
   </component>
@@ -187,22 +188,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="754" y="358" key="#com.intellij.ide.util.TreeClassChooserDialog/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1603902342902" />
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom" timestamp="1604835399225">
+    <state width="1493" height="208" key="GridCell.Tab.0.bottom" timestamp="1604886692483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604835399225" />
-    <state width="1493" height="208" key="GridCell.Tab.0.center" timestamp="1604835399225">
+    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604886692483" />
+    <state width="1493" height="208" key="GridCell.Tab.0.center" timestamp="1604886692483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604835399225" />
-    <state width="1493" height="208" key="GridCell.Tab.0.left" timestamp="1604835399225">
+    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604886692483" />
+    <state width="1493" height="208" key="GridCell.Tab.0.left" timestamp="1604886692483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604835399225" />
-    <state width="1493" height="208" key="GridCell.Tab.0.right" timestamp="1604835399225">
+    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604886692483" />
+    <state width="1493" height="208" key="GridCell.Tab.0.right" timestamp="1604886692483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604835399225" />
+    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604886692483" />
     <state x="379" y="0" key="SettingsEditor" timestamp="1604701004188">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,26 +1,26 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchTest {
+    private static WebDriver driver;
     @BeforeEach
-    private void initWebDriver(){
-
+    public void setUp(){
+        driver = WebDriverInit.init();
+    }
+    @AfterEach
+    public void tearDown() {
+        driver.quit();
     }
 
-    @Test
+    @RepeatedTest(10)
     public void searchBar(){
-        String findString = "iphone";
-        WebDriver driver;
-        System.setProperty("webdriver.chrome.driver","D:\\Projects\\Tesing\\Lab3\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1920, 1080));
+        String findString = "nutella";
+
         driver.get("https://market.yandex.ru/");
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         //fill search bar
         //*[@id="header-search"]
         WebElement searchInput = driver.findElement(By.xpath("//*[@id=\"header-search\"]"));
@@ -33,7 +33,7 @@ public class SearchTest {
         WebElement searchRes = driver.findElement(By.xpath("//*[@id=\"header-search\"]"));
 //        System.out.println("check "+searchRes.getText());
 
-        //check search tag in url
+        //check search tag
         String curUrl = driver.getCurrentUrl();
         int a = curUrl.indexOf("?text="+findString);
         Assertions.assertTrue(a>0,"cant not find");
