@@ -14,30 +14,24 @@ public class SelectTest {
 
   @BeforeEach
   public void setUp() {
-    driver = WebDriverInit.init();
+    driver = WebDriverInit.init("chrome");
 
   }
   @AfterEach
   public void tearDown() {
     driver.quit();
   }
-  @Test
-  public void buy() {
-    driver.get("https://market.yandex.ru/");
-    driver.findElement(By.xpath("//input[@id=\'header-search\']")).click();
-    driver.findElement(By.id("header-search")).sendKeys("nutella");
-    driver.findElement(By.xpath("//button[@type=\'submit\']")).click();
-
-  }
 
   public void selectProduct(String str) throws InterruptedException {
     String product = str;
     System.out.println(product);
     driver.get(product);
+    //click button add product
     WebElement addButton = driver.findElement(By.xpath("//span[text()='Добавить в корзину']"));
     addButton.click();
     Thread.sleep(3000);
     WebDriverWait wait = new WebDriverWait(driver, 20);
+    //click button go to cart
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[13]/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div/div[2]/a/button")));
     WebElement goToCart = driver.findElement(By.xpath("/html/body/div[1]/div/div[13]/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div/div[2]/a/button"));
     goToCart.click();
@@ -53,12 +47,13 @@ public class SelectTest {
     WebElement addButton = driver.findElement(By.xpath("//span[text()='Добавить в корзину']"));
     addButton.click();
     Thread.sleep(1000);
+    //click to button cart
     WebDriverWait wait = new WebDriverWait(driver, 5);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[13]/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div/div[2]/a/button")));
     WebElement goToCart = driver.findElement(By.xpath("/html/body/div[1]/div/div[13]/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div/div[2]/a/button"));
     goToCart.click();
     Thread.sleep(1000);
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"/my/cart\"]")));
+    //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href=\"/my/cart\"]")));
     driver.navigate().refresh();
 
 //    driver.navigate().to("https://pokupki.market.yandex.ru/my/checkout");
@@ -66,7 +61,7 @@ public class SelectTest {
 
 
   @Test
-  public void selectAlotProduct() throws InterruptedException {
+  public void selectTestAlotProduct() throws InterruptedException {
     //choose product
     String product = pickRandomProduct();
     System.out.println(product);
@@ -80,22 +75,24 @@ public class SelectTest {
     Thread.sleep(3000);
     driver.navigate().refresh();
     Thread.sleep(1000);
-    ///html/body/div[1]/div/div[1]/div[3]/div/div/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div
+    //get amount
     WebElement checkamount = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div"));
     System.out.println(checkamount.getText());
     Assertions.assertEquals("В корзине 3 товара",checkamount.getText(),"need to 3 ");
   }
 
-  @RepeatedTest(10)
-  public void selectManyKindProduct() throws InterruptedException {
+  @Test
+  public void selectTestManyKindProduct() throws InterruptedException {
     //choose product
     String product1 = pickRandomProduct();
     String product2 = pickRandomProduct();
     while(product1.equals(product2)) {
       product2 = pickRandomProduct();
     }
+    //select product
     selectProduct(product1);
     selectProduct(product2);
+    //input number of product
     WebElement inputAMount = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/div/div/div/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div/input"));
     inputAMount.sendKeys(Keys.BACK_SPACE);
     Thread.sleep(1000);

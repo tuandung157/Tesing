@@ -8,14 +8,14 @@ public class SearchTest {
     private static WebDriver driver;
     @BeforeEach
     public void setUp(){
-        driver = WebDriverInit.init();
+        driver = WebDriverInit.init("chrome");
     }
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
 
-    @RepeatedTest(10)
+    @Test
     public void searchBar(){
         String findString = "nutella";
 
@@ -25,7 +25,7 @@ public class SearchTest {
         //*[@id="header-search"]
         WebElement searchInput = driver.findElement(By.xpath("//*[@id=\"header-search\"]"));
         searchInput.sendKeys(findString);
-
+        //click to searchButton
         WebElement searchButton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/noindex/div/div/div[2]/div[2]/div/form/div/div[2]/button"));
         searchButton.click();
 

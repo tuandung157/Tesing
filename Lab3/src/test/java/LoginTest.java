@@ -10,8 +10,9 @@ public class LoginTest {
     private static WebDriver driver;
     @BeforeEach
     public void setUp(){
-        driver = WebDriverInit.init();
+        driver = WebDriverInit.init("chrome");
     }
+
     @Test
     public void login(){
         driver.get("https://market.yandex.ru/");
@@ -19,7 +20,7 @@ public class LoginTest {
         //find login button
         WebElement loginButton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/noindex/div/div/div[2]/div[3]/div[1]/div[5]/div/div/a"));
         loginButton.click();
-
+        //change tab
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
@@ -28,16 +29,17 @@ public class LoginTest {
         WebElement inputLogin = driver.findElement(By.xpath("//*[@id=\"passp-field-login\"]"));
         inputLogin.sendKeys("p3400testtpo");
 
-        ////*[@id="root"]/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[3]/button
+        //confirm login name
         WebElement enterLogin = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[3]/button"));
         enterLogin.click();
+
+        //input password
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"passp-field-passwd\"]")));
         ////*[@id="passp-field-passwd"]
         WebElement inputPass = driver.findElement(By.xpath("//*[@id=\"passp-field-passwd\"]"));
         inputPass.sendKeys("1571997");
 
-        ////*[@id="root"]/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button
         //click login
         WebElement login = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button"));
         login.click();
@@ -50,6 +52,7 @@ public class LoginTest {
         //click avatar
         WebElement avatar = driver.findElement(By.xpath("/html/body/div[2]/div[3]/noindex/div/div/div[2]/div[3]/div[1]/div[5]/div/div/div/div/button/div/img"));
         avatar.click();
+        //check the name
         WebElement checkUser = driver.findElement(By.xpath("/html/body/div[2]/div[3]/noindex/div/div/div[2]/div[3]/div[1]/div[5]/div/div/div/div/div/div/div/div/div[1]/a[1]/div/div[2]/div[2]"));
         System.out.println(checkUser.getText());
         Assertions.assertEquals("p3400testtpo@yandex.ru",checkUser.getText(),"need to the same user");

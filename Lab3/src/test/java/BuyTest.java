@@ -13,14 +13,14 @@ public class BuyTest {
     private WebDriver driver;
     @BeforeEach
     public void setUp() throws InterruptedException {
-        driver = WebDriverInit.init();
+        driver = WebDriverInit.init("chrome");
         login();
         String product =  pickRandomProduct();
         selectProduct(product);
     }
     @AfterEach
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
     @Test
@@ -33,19 +33,19 @@ public class BuyTest {
         Thread.sleep(5000);
 
         //nevigate link
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div/div/div/div[2]/div/div[3]/div/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div/button")));
-        WebElement payOnline = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div/div/div/div[2]/div/div[3]/div/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div/button"));
-        payOnline.click();
-
-
-
-
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div/div/div/div[2]/div/div[3]/div/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div/button")));
+        //WebElement payOnline = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div/div/div/div[2]/div/div[3]/div/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div/button"));
+        //click to button pay
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Перейти к оплате')]")));
+        driver.findElement(By.xpath("//span[contains(text(),'Перейти к оплате')]")).click();//span[text()='Перейти к оплате']"
+        //payOnline.click();
 
     }
     public void selectProduct(String str) throws InterruptedException {
         String product = str;
         System.out.println(product);
         driver.get(product);
+        Thread.sleep(3000);
         WebElement addButton = driver.findElement(By.xpath("//span[text()='Добавить в корзину']"));
         addButton.click();
         Thread.sleep(3000);
